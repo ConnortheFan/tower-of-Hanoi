@@ -1,4 +1,10 @@
+# “Tower of Hanoi” is a game in which you have 3 pegs (call them left, middle, and right) and a tower of different-sized rings on left. 
+# The rings are stacked such that, from bottom-to-top, they go from largest-to-smallest.
 
+# The goal of the game is to move the entire tower from left to right, but with the following constraints: 
+# (1) you must move a single ring from one peg to another in any given move, and 
+# (2) you cannot place a ring on top of another ring smaller than itself (but you can place a ring on top of another ring larger than itself). 
+# In addition to simply moving the tower from left to right, you also want to try to minimize the number of moves.
 
 
 def load_board():
@@ -89,6 +95,10 @@ def move_stack(number, end):
       print("New space",other)
       print("")
       move_stack(new_number, other)
+
+# A = left
+# B = middle
+# C = right
 
 A = ["A"]
 B = ["B"]
