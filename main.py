@@ -8,12 +8,19 @@
 
 
 def load_board():
+  '''
+  Print the current state of the board
+  '''
   print(A)
   print(B)
   print(C)
   print("")
 
 def move(start, end):
+  '''
+  Move the top ring from start to end.
+  Also counts the number of moves made.
+  '''
   global number_of_moves
   number_of_moves += 1
   print("Move", number_of_moves)
@@ -23,6 +30,10 @@ def move(start, end):
   load_board()
 
 def find_number(number):
+  '''
+  Given a certain number representig a ring:
+  Find and return which peg the ring is on
+  '''
   if number in A:
     return A
   elif number in B:
@@ -31,9 +42,15 @@ def find_number(number):
     return C
 
 def check_available(number, location):
+  '''
+  Return if the number is at the top of the peg represented by location
+  '''
   return number == location[len(location)-1]
 
 def free_space(start, end):
+  '''
+  Given 2 pegs, start and end, return the remaining peg
+  '''
   if start == A:
     if end == B:
       return C
@@ -51,6 +68,9 @@ def free_space(start, end):
       return A
 
 def valid_move(number, end):
+  '''
+  Check if moving a certain ring represented by number is able to move to the peg, end
+  '''
   if len(end) == 1:
     return True
   elif number > end[len(end)-1]:
@@ -59,11 +79,20 @@ def valid_move(number, end):
     return True
 
 def reversed_list(number):
+  '''
+  Given a number, return the list from 1 to that number.
+  Ex. Given 5, return [1,2,3,4,5]
+  '''
   x = list(range(1, number+1))
   x.reverse()
   return x
 
 def reversed_list_in(list, location):
+  '''
+  Given a list, return if that list is in location.
+  Meant to be used with reversed_list(number).
+  Can check if a peg has all consecutive rings.
+  '''
   answer = True
   for i in list:
     if i in location:
@@ -74,6 +103,11 @@ def reversed_list_in(list, location):
   return answer
   
 def move_stack(number, end):
+  '''
+  The main function of the whole algorithm.
+  Given a number, move the consecutive stack from that number to end.
+  Also prints relevent information.
+  '''
   while not reversed_list_in(reversed_list(number), end):
     # print(reversed_list(number))
     print("Number:", number)
